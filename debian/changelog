@@ -1,31 +1,107 @@
-cairo (1.12.2-3) unstable; urgency=low
+cairo (1.12.16-2) unstable; urgency=low
 
-  * Team upload.
-
-  [ intrigeri ]
-  * Fix several printing related problems:
-    - Evince crash when printing certain PDF files (Closes: #672336)
-    - Evince producing broken print output (Closes: #679105)
-    Patches cherry-picked from upstream:
-    - 07_cff-subsetting-Ignore-charset-for-non-cid-fonts.patch
-    - 08_cff_convert_._to_locale_specific_decimal_point_befor.patch
-    - 09_cff_use_correct_size_for_buffer.patch
-    - 10_cff_subsetting_widths_can_be_floating_point.patch
+  [ Cyril Brulebois ]
+  * Misc fixes:
+    + Update libcairo2-udeb's description (one line is sufficient).
+    + Use the official field for udebs: Package-Type.
 
   [ Michael Biebl ]
-  * Fix segmentation fault when rendering SVGs at certain sizes.
-    (Closes: #697482)
-    Patch cherry-picked from upstream:
-    - 11_polygon-reduce_reduce_broken_stopped-edge_continuation.patch
+  * Add myself to uploaders.
+  * The libcairo2-udeb package already ships the libcairo-gobject2 library, so
+    instead of splitting libcairo-gobject2 into its separate udeb, just fix
+    the shlibs information for libcairo-gobject2 to point to libcairo2-udeb.
+    Closes: #648533
 
- -- Michael Biebl <biebl@debian.org>  Thu, 31 Jan 2013 16:22:34 +0100
+ -- Michael Biebl <biebl@debian.org>  Tue, 17 Sep 2013 16:37:22 +0200
 
-cairo (1.12.2-2.1) unstable; urgency=low
+cairo (1.12.16-1) unstable; urgency=low
 
-  * Non-maintainer upload.
-  * (Closes: #690799)  evince crashes with a certain PDF file
+  * Team upload.
+  * New upstream release.
+  * Fix symbol versions for the gl/egl symbols. Closes: #714845
+  * Add new symbols.
+  * Refresh patches.
 
- -- Neil Williams <codehelp@debian.org>  Sat, 26 Jan 2013 23:22:12 +0000
+ -- Michael Biebl <biebl@debian.org>  Fri, 13 Sep 2013 02:55:29 +0200
+
+cairo (1.12.14-5) unstable; urgency=low
+
+  * Add gl/egl support back now that wayland has been multi-archified.
+    Closes: #712022.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 12 Jun 2013 19:33:43 +0200
+
+cairo (1.12.14-4) unstable; urgency=low
+
+  * debian/control:
+    + Make libcairo2-dev depend on libxext-dev.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 08 May 2013 15:26:06 +0200
+
+cairo (1.12.14-3) unstable; urgency=low
+
+  * Team upload.
+  * Disable EGL/GL support for now until libwayland has support for
+    multi-arch.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 08 May 2013 11:43:53 +0200
+
+cairo (1.12.14-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Sebastian Dröge <slomo@debian.org>  Mon, 06 May 2013 08:32:44 +0200
+
+cairo (1.12.14-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Sebastian Dröge <slomo@debian.org>  Mon, 11 Feb 2013 23:47:53 +0100
+
+cairo (1.12.12-1) experimental; urgency=low
+
+  * Team upload.
+  * New upstream release.
+  * Track .xz tarballs.
+  * Bump Standards-Version to 3.9.4.
+  * Bump debhelper compatility level to 9.
+  * Use --as-needed feature of dh-autoreconf.
+  * Refresh 01_build_perf_utils.patch.
+  * Remove obsolete Breaks.
+
+ -- Michael Biebl <biebl@debian.org>  Mon, 11 Feb 2013 22:41:55 +0100
+
+cairo (1.12.10-1) experimental; urgency=low
+
+  * New upstream bugfix release:
+    + debian/control:
+      - Build-depend on liblzo2-dev.
+
+ -- Sebastian Dröge <slomo@debian.org>  Fri, 18 Jan 2013 11:02:22 +0100
+
+cairo (1.12.6-1) experimental; urgency=low
+
+  [ Sebastian Dröge
+  * New upstream bugfix release.
+  [ Martin Pitt ]
+  * Add debian/tests: Simple compile/link/run autopkgtest. Thanks Rafał
+    Cieślak! (LP: #1073374)
+
+ -- Sebastian Dröge <slomo@debian.org>  Mon, 12 Nov 2012 15:29:05 +0100
+
+cairo (1.12.4-1) experimental; urgency=low
+
+  * New upstream bugfix release:
+    + debian/control:
+      - Build-depend on libxext-dev.
+  * debian/control:
+    + Build-depend on libpng-dev instead of libpng12-dev (Closes: #662279, #642264, #673642).
+  * debian/control,
+    debian/rules,
+    debian/libcairo2.symbols:
+    + Re-enable OpenGL/EGL backend (Closes: #684302).
+
+ -- Sebastian Dröge <slomo@debian.org>  Mon, 08 Oct 2012 10:05:46 +0200
 
 cairo (1.12.2-2) unstable; urgency=low
 
