@@ -1,3 +1,84 @@
+cairo (1.14.0-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patches - picked two post-release patches resolving Debian-reported
+    issues:
+    - 0005-CFF-Fix-unaligned-access.patch
+      fixes unaligned access reported on sparc (Closes: #712836)
+    - 0008-tor-scan-converter-can-t-do_fullrow-when-intersectio.patch
+      resolves segfault while rendering some graphs (Closes: #766479)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Fri, 24 Oct 2014 15:36:28 -0400
+
+cairo (1.14.0-2) unstable; urgency=medium
+
+  * Modernise debian/rules using minimised dh.
+  * Use list-missing to show uninstalled files.
+  * Don't install libtool .la files.
+  * Add --as-needed to dh-autoreconf.
+  * Use canonical URLs for Vcs-* fields.
+  * Set pkg-gnome-maintainers@lists.alioth.debian.org as Maintainer.
+  * Install cairo-analyse-trace binary into cairo-perf-utils package.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 22 Oct 2014 16:37:08 +0200
+
+cairo (1.14.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add debian/gbp.conf for git-buildpackage and configure it to use
+    pristine-tar.
+  * Update patches:
+    - Remove patches which have been merged upstream or no longer apply.
+    - Refresh remaining patches.
+  * Bump Standards-Version to 3.9.6.
+  * Drop initial article from description synopsis.
+  * Update symbols file and use the upstream version for the symbols
+    introduced in 1.12.16-3. Update shlibs version info accordingly for
+    libcairo2.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 21 Oct 2014 23:12:24 +0200
+
+cairo (1.12.16-5) unstable; urgency=medium
+
+  * debian/control:
+    + webkitgtk was also using the GL/EGL support, so add the necessary
+      breaks.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sat, 06 Sep 2014 14:26:26 +0200
+
+cairo (1.12.16-4) unstable; urgency=medium
+
+  * Disable experimental GL/EGL support. It doesn't bring much and
+    causes problems in platforms where the GL and the EGL/GLES stacks
+    are from different vendors, which is the case in some embedded
+    platforms, particularly in the ARM world.
+    Break weston versions that use the gl/egl symbols.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Fri, 05 Sep 2014 00:17:38 +0200
+
+cairo (1.12.16-3) unstable; urgency=medium
+
+  * Team upload.
+  * Cherry-pick patches from upstream for device scale (HiDPI) support
+    - image-Use-convolution-filters-for-sample-reconstruct.patch
+    - gstate-Respect-device-transform-in-stroke.patch
+    - default-context-Inherit-device-scale-in-push_group-s.patch
+    - subsurface-Handle-device-scales.patch
+    - gstate-Move-device-scale-font-scaling-to-gstate.patch
+    - gstate-Handle-device-scale-on-surface-as-source.patch
+    - spans-traps-Undo-device-transform-from-source-matrix.patch
+    - surface-expose-the-device-scale.patch
+    - surface-Opencode-create_similar.patch
+    - surface-Merge-scratch-construction-into-_cairo_surfa.patch
+    - surface-Inherit-device-scale-in-cairo_surface_create.patch
+    - trace-Record-set-device-scale.patch
+    - script-Add-support-for-replaying-device-scale.patch
+    - Downscaling-requires-pixman-0.30.patch
+  * Update debian/libcairo2.symbols with added cairo_surface_get_device_scale
+  * Bump pixman build-dependency to >= 0.30.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 24 Aug 2014 10:17:07 -0700
+
 cairo (1.12.16-2) unstable; urgency=low
 
   [ Cyril Brulebois ]
@@ -81,8 +162,9 @@ cairo (1.12.10-1) experimental; urgency=low
 
 cairo (1.12.6-1) experimental; urgency=low
 
-  [ Sebastian Dröge
+  [ Sebastian Dröge ]
   * New upstream bugfix release.
+
   [ Martin Pitt ]
   * Add debian/tests: Simple compile/link/run autopkgtest. Thanks Rafał
     Cieślak! (LP: #1073374)
