@@ -5,3 +5,4 @@
 0005-CFF-Fix-unaligned-access.patch
 0008-tor-scan-converter-can-t-do_fullrow-when-intersectio.patch
 0009-CVE-2016-3190.patch
+CVE-2016-9082.patch
