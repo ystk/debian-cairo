@@ -1,3 +1,11 @@
+cairo (1.14.0-2.1+deb8u3) jessie-security; urgency=high
+
+  * Non-maintainer upload by the ELTS team.
+  * Add patch to fix mask usage in image-compositor.
+    (Fixes: CVE-2020-35492)
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Tue, 29 Dec 2020 19:35:06 +0530
+
 cairo (1.14.0-2.1+deb8u2) jessie; urgency=medium
 
   * Non-maintainer upload.
